@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +9,27 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, Valid
 export class AppComponent implements OnInit{
   title = 'practicaDev';
   
-  form:FormGroup = new FormGroup({});
+  // form:FormGroup = new FormGroup({});
+  
 
   variable1 = 0;
   variable2 = 0;
   resultado = 0;
 
 
+  // constructor(private fb: FormBuilder) {
+  //   this.crearFormulario();
+  // }
+
+  form!: FormGroup; // Asegúrate de que está definida como un FormGroup
+
+  
+
   constructor(private fb: FormBuilder) {
-    this.crearFormulario();
+    this.form = new FormGroup({
+      variable1: new FormControl(null, [Validators.required, Validators.min(0)]),
+      variable2: new FormControl(null, [Validators.required, Validators.min(0)]),
+    });
   }
 
   ngOnInit(): void {}

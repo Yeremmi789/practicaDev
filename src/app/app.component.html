@@ -1,7 +1,7 @@
 <body>
   <div class="container">
     <p class="titulo">CALCULADORA</p>
-    <form [formGroup]="form" class="form">
+    <form class="form">
       <div class="input-container">
         <input type="number" formControlName="variable1" placeholder="Número 1">
         <div *ngIf="form.get('variable1')?.errors?.['required']">Este campo es obligatorio.</div>
